@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{template}">
+<head>
+<meta charset="ISO-8859-1">
+<title>New User</title>
+<link rel="stylesheet" type="text/css"
+	href="/webjars/bootstrap/4.6.1/css/bootstrap.min.css">
+<script src="/webjars/jquery/3.6.0/dist/jquery.min.js"></script>
+<script type="text/javascript"
+	src="/webjars/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="/webjars/bootstrap/4.6.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div layout:fragment="pageContent">
+
+		<div class="container mt-3">
+
+			<form class="form-inline" th:action="@{/addConnection}" method="post">
+
+				<label for="email" class="my-2 mx-2">Add a New Contact:</label>
+				 
+				 <input name="email" id="email" type="text" class="form-control my-2 mx-2" placeholder="Email to add as a connection" autocomplete="true">
+				 
+				<button type="submit" class="btn btn-lg btn-primary my-2 mx-2"> ADD FREINDS</button>
+			</form>
+			<div>
+				<span class="has-error text-danger" th:text="${errorMail}" th:if="${errorMail}"></span>
+				<span class="has-error" th:text="${errorUser}" th:if="${errorUser}"></span>
+				</div>
+		</div>
+
+		<div class="container-table">
+           <div class="row">
+            <div class="col-lg-10 mt-5 mb-5">
+            
+			<table class="table table-bordered table-responsible-sm">
+				<thead>
+					<tr>
+
+						<th>firstName</th>
+						<th >Lastname</th>
+						<th >EMail</th>
+						
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="relation:${userAdd}">
+						<td th:text="${relation.firstName">FirstName</td>
+						<td th:text="${relation.lastName">Lastname</td>
+						<td th:text="${relation.email">email</td>
+						<!-- <td>
+							<form th:action="@{user/relation}" th:method="post">
+								<input type="hidden" th:value="${relation.id}" th:name="id">
+								<button type="button" class="btn-danger btn-sm">
+									<i class="fa fa-trash" aria-hidden="true"></i>
+								</button>
+							</form>
+						</td> -->
+					</tr>
+				</tbody>
+
+			</table>
+			
+		</div>
+		</div>
+		
+	</div>
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
