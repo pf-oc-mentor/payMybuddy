@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="utf-8">
+<title>template</title>
+<link rel="stylesheet" type="text/css"
+	href="/webjars/bootstrap/4.6.1/css/bootstrap.min.css">
+<script src="/webjars/jquery/3.6.0/dist/jquery.min.js"></script>
+<script src="/webjars/bootstrap/4.6.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<header>
+
+		<div class="d-flex justify-content-between" style="padding: 15px;">
+			<h1 class="bg-success btn-lg text-white">Pay My Buddy</h1>
+			<nav class="nav justify-content-between align-content-center"
+				style="width: 50%;">
+				<a href="#">Home</a> <a href="#">Transfert</a> <a href="#">Profile</a>
+				<a href="#">Contact</a> <a href="#">Log Off</a>
+			</nav>
+		</div>
+		<nav class="nav bg-light" style="padding-left: 15px;">
+			<a class="nav-link active" href="#">Home</a> <a
+				class="nav-link disabled">/ Transfert</a>
+		</nav>
+	</header>
+
+
+
+
+
+
+
+
+	<section layout:fragment="pageContent"></section>
+</body>
+</html>
