@@ -13,38 +13,38 @@ import com.example.buddy.service.UserService;
 
 @Controller
 public class UserController {
-	Logger logger = org.slf4j.LoggerFactory.getLogger(UserController.class);
-	@Autowired
-	private UserService userService;
-	
 
-	@GetMapping("/connection")
-	public String connection(Model model) {
-		// model.addAttribute("paged", attributeValue);
-		return "relation";
+    Logger logger = org.slf4j.LoggerFactory.getLogger(UserController.class);
+    @Autowired
+    private UserService userService;
 
-	}
-	
+
+    @GetMapping("/connection")
+    public String connection(Model model) {
+        // model.addAttribute("paged", attributeValue);
+        return "relation";
+
+    }
+
     @PostMapping("/addConnection")
-	public String connectionAdd(@RequestParam String email, String password, Model model) {
-		logger.info("post connection ");
+    public String connectionAdd(@RequestParam String email, Model model) {
+        logger.info("post connection "+email);
+        
+        User owner = userService.findByEmail("sekou@exemple.com");
 
-		User owner = userService.getCurrentUser(email, password);
+        if (!userService.existsByEmailUser(email)) {
+            model.addAttribute("errorMail", "Email unknown");
+            return "relation";
+        }
 
-		if (!userService.existsByEmailUser(email)) {
-			model.addAttribute("errorMail", "Email unknown");
-			return "relation";  
-		}
-		
 //		if (owner.getEmail().equalsIgnoreCase(email)) {
 //			model.addAttribute("errorUser", "you can't add yourself as a connection");
 //			return "relation";
 //		}
-		
-		 User userAdd =userService.addBuddy(owner, email);
-		 model.addAttribute("userAdd", userAdd);
-		return "relation";
-		
-	}
+        User userAdd = userService.addBuddy(owner, email);
+        model.addAttribute("userAdd", userAdd);
+        return "relation";
+
+    }
 
 }
